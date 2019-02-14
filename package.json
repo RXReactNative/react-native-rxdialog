@@ -1,0 +1,36 @@
+
+{
+  "name": "react-native-rxdialog",
+  "version": "1.0.0",
+  "description": "React Native RXDialog for IOS & Android & windows.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "dialog",
+    "popup",
+    "alert",
+    "rxdialog",
+    "react-component",
+    "react native dialog",
+    "react-native-rxdialog",
+    "react native rxdialog",
+    "ios",
+    "android",
+    "windows"
+  ],
+  "author": "srxboys (https://github.com/srxboys)",
+  "license": "MIT",
+  "homepage": "https://github.com/RXReactNative/react-native-rxdialog/blob/master/README.md",
+  "repository": {
+      "type": "git",
+      "url": "git@github.com:RXReactNative/react-native-rxdialog.git"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.41.2",
+    "react-native-windows": ">=0.41.0-rc.1"
+
+  }
+}
