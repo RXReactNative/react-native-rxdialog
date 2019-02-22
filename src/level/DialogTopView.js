@@ -25,7 +25,7 @@ import {
 } from 'react-native'
 
 import {ISIphoneX, ISIphone,ISAndroid, IFIphone, IFIphoneX,
-  DeviceWidth, DeviceHeight} from '../../../util/PlatformType.js'
+  DeviceWidth, DeviceHeight} from '../util/PlatformType.js'
 
 const width = DeviceWidth;
 const height = DeviceHeight;

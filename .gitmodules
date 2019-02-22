@@ -1,0 +1,3 @@
+[submodule "rxdialog-example"]
+	path = rxdialog-example
+	url = https://github.com/RXReactNative/react-native-rxdialog-example

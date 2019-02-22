@@ -35,7 +35,7 @@ import Dialog from '../main/Dialog'
 import DialogTopView from '../level/DialogTopView'
 
 import {ISIphoneX, ISIphone,ISAndroid, IFIphone, IFIphoneX,
-  DeviceWidth, DeviceHeight} from '../../../util/PlatformType.js'
+  DeviceWidth, DeviceHeight} from '../util/PlatformType.js'
 
 const width = DeviceWidth * 0.7;
 const borderRadius = 10;
