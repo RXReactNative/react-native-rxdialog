@@ -56,8 +56,10 @@ export default class AlertAnimation extends Animation {
   createAnimations(): Object {
     const transform = [{
       scale: this.animate.interpolate({
-        inputRange: [0, 0.9, 1],
-        outputRange: [0.5, 1.2, 1],
+        // inputRange: [0, 0.9, 1],
+        // outputRange: [0.5, 1.2, 1],
+        inputRange: [0.1, 0.5, 1],
+        outputRange: [1, 1.1, 1],
       }),
     },];
 

@@ -6,7 +6,18 @@
  * 
  * -------------------------------------------
  * 
- * 可用参数列表:
+ * 可重写方法列表:
+ * @function hiddenAll          隐藏所有
+ * @function show               显示(@require 子类实现)
+ * @function hide               隐藏
+ * @function getDialogAnimated  dialog 的 动画
+ * @function getDialogStyles    dialog 的 位置、颜色等
+ * @function getOverlayAnimated 遮罩层 的 动画
+ * @function getOverlayStyles   遮罩层 的 样式
+ * @function getOverlayEnable   遮罩层 是否 点击
+ * 
+ * 可调用的方法列表(不可重写)
+ * @function addPropsValue      添加装饰(子类调用 【必须】)
 **/
 
 'use strict'

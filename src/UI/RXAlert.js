@@ -6,12 +6,14 @@
  * 
  * -------------------------------------------
  * 
- * 可用参数列表:
- * @param style           样式
- * @param htmlCode        html源码
- * @param highLightEnable 是否要点击效果
- * 
- * @function onPress      点击事件
+ * 可调用的方法列表:
+ * @function hiddenAll   隐藏所有
+ * @function show        显示(子类实现 【必须】)
+ *                        show(title, content, buttons, Callback, 
+ *                             contentOptions:{contentTextStyle: ?}, 
+ *                             titleOptions:{titleTextStyle: ?} 
+ *                           ) 
+ * @function hide        隐藏
 **/
 
 'use strict'

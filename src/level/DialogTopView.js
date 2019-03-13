@@ -152,26 +152,26 @@ export default class DialogTopView extends Component {
   render() {
     let { elements } = this.state;
     // 如果存在loading  只加载loading，loading结束后加载其他element
-    let laodingItem = null;
+    // let laodingItem = null;
 
-    for (let i = elements.length - 1; i >= 0; --i) {
-      if (elements[i].key === RXTRNLoadingKey) {
-        laodingItem = elements[i].element;
-        break;
-      }
-    }
-    if (laodingItem) {
-      return (
-        <View style={{ flex: 1 }}>
-          <Animated.View style={{ flex: 1, transform: transform }}>
-            {this.props.children}
-          </Animated.View>
-          <View style={styles.overlayContainer}>
-            {laodingItem}
-          </View>
-        </View>
-      )
-    }
+    // for (let i = elements.length - 1; i >= 0; --i) {
+    //   if (elements[i].key === RXTRNLoadingKey) {
+    //     laodingItem = elements[i].element;
+    //     break;
+    //   }
+    // }
+    // if (laodingItem) {
+    //   return (
+    //     <View style={{ flex: 1 }}>
+    //       <Animated.View style={{ flex: 1, transform: transform }}>
+    //         {this.props.children}
+    //       </Animated.View>
+    //       <View style={styles.overlayContainer}>
+    //         {laodingItem}
+    //       </View>
+    //     </View>
+    //   )
+    // }
 
     var element = null; // view
     var key = 0;        // view 在当前缓存的key
