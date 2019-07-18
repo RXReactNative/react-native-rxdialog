@@ -5,14 +5,6 @@
 
 `$ npm install react-native-rxdialog --save`
 
-### Mostly automatic installation
-
-`$ react-native link react-native-rxdialog`
-
-<br />
-
----
-
 ### support for custom UI(View)
 
 example : -> https://github.com/RXReactNative/react-native-rxdialog-example
