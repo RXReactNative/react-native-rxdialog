@@ -28,19 +28,33 @@ example : -> https://github.com/RXReactNative/react-native-rxdialog-example
 ## Usage
 ```javascript
 import {
-	RXAlert,
+  RXDialogTopView,
+  
+  RXAlert,
 
   RXDialog,
-  RNRxdialog,
 
   RXAnimation,
   RXAlertAnimation,
   RXFadeAnimation,
   RXScaleAnimation,
   RXSlideAnimation,
+
+  PlatformType,
+  DeviceWidth,
+  DeviceHeight,
+
+  ISIphone,
+  ISIphoneX,
+  ISAndroid,
+
+  IFIphone,
+  IFIphoneX,
 } from 'react-native-rxdialog';
 
-// TODO: What to do with the module?
-RNRxdialog;
+// TODO: What to do with the Dialog?
+RXDialog;
+RXDialogTopView;
+RXAnimation;
 ```
   
