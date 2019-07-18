@@ -17,15 +17,15 @@ import {
   StyleSheet,
   AppRegistry,
   View,
-  Text,
-  Easing,
   Animated,
   DeviceEventEmitter,
   TouchableWithoutFeedback
 } from 'react-native'
 
-import {ISIphoneX, ISIphone,ISAndroid, IFIphone, IFIphoneX,
-  DeviceWidth, DeviceHeight} from '../util/PlatformType.js'
+import {
+  // ISIphoneX, ISIphone,ISAndroid, IFIphone, IFIphoneX,
+  DeviceWidth, DeviceHeight
+} from '../util/PlatformType.js'
 
 const width = DeviceWidth;
 const height = DeviceHeight;

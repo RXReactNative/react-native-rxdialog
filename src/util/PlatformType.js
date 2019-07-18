@@ -14,42 +14,41 @@
 import React from 'react';
 
 import {
-     StyleSheet,
-     PixelRatio,
-     Dimensions,
-     Platform,
-     DeviceInfo
+  PixelRatio,
+  Dimensions,
+  Platform,
  } from 'react-native'
 
+const X_WIDTH = 375;
+const X_HEIGHT = 812;
+const XSMAX_WIDTH = 414;
+const XSMAX_HEIGHT = 896;
 
-const {PlatformConstants} = require('NativeModules');
-const ReactNativeVersion = require('ReactNativeVersion');
+const { height, width} = Dimensions.get('window');
 
-const P_WIDTH = 375;
-const P_HEIGHT = 812;
+export const DeviceWidth = Platform.OS === 'web'? document.documentElement.clientWidth: width;
+export const DeviceHeight = Platform.OS === 'web'? document.documentElement.clientHeight: height;
 
-export const DeviceWidth = Dimensions.get('window').width;      //设备的宽度
-export const DeviceHeight = Dimensions.get('window').height;    //设备的高度
-
-const { minor = 0 } = PlatformConstants.reactNativeVersion || {};
 
 /**
  * 判断是否为 iphoneX
  * @returns {boolean}
  */
-export function ISIphoneX(){
-    if (Platform.OS === 'web') return false; 
-    if (minor >= 50) {  //React Native 在0.50.1版本,添加了一个SafeAreaView的Component，来完美支持iPhoneX的适配。
-        // console.log('ISIphoneX ==> minor >= 50 ==> DeviceInfo.isIPhoneX_deprecated=' +DeviceInfo.isIPhoneX_deprecated)
-        return DeviceInfo.isIPhoneX_deprecated;
-    }
+export function ISIphoneX() {
+  if (Platform.OS === 'web') return false; 
 
-    return (
-        Platform.OS === 'ios' &&
-        ((DeviceWidth === P_WIDTH && DeviceHeight === P_HEIGHT) ||
-            (DeviceWidth === P_HEIGHT && DeviceHeight === P_WIDTH))
-    )
+  return (
+    Platform.OS === 'ios' &&
+    //Portrait && (ios => PortraitUpsideDown)  人像
+    ((DeviceHeight === X_HEIGHT && DeviceWidth === X_WIDTH) || 
+    // OrientationLandscapeLeft OrientationLandscapeRight  风景
+    (DeviceHeight === X_WIDTH && DeviceWidth === X_HEIGHT)) ||
+
+    ((DeviceHeight === XSMAX_HEIGHT && DeviceWidth === XSMAX_WIDTH) ||
+    (DeviceHeight === XSMAX_WIDTH && DeviceWidth === XSMAX_HEIGHT))
+  );
 }
+
 
 /**
  * 判断是否为 Iphone
@@ -57,7 +56,7 @@ export function ISIphoneX(){
  */
 export function ISIphone(){
   return (
-      Platform.OS === 'ios'
+    Platform.OS === 'ios'
   )
 }
 
@@ -67,7 +66,7 @@ export function ISIphone(){
  */
 export function ISAndroid(){
   return (
-      ISIphone()?false: true
+    ISIphone()?false: true
   )
 }
 
@@ -80,7 +79,7 @@ export function ISAndroid(){
  * @returns {*}
  */
 export function IFIphone(iosStyle: any, androidStyle: any) {
-    return IFIphoneX(iosStyle, iosStyle, androidStyle);
+  return IFIphoneX(iosStyle, iosStyle, androidStyle);
 }
 
 /**
@@ -91,12 +90,12 @@ export function IFIphone(iosStyle: any, androidStyle: any) {
  * @returns {*}
  */
 export function IFIphoneX(iphoneXStyle: any, iosStyle: any, androidStyle: any) {
-    if (ISIphoneX()) {
-        return iphoneXStyle;
-    } else if (ISIphone()) {
-        return iosStyle
-    } else {
-        if (androidStyle || androidStyle===0 ) return androidStyle;
-        return iosStyle
-    }
+  if (ISIphoneX()) {
+    return iphoneXStyle;
+  } else if (ISIphone()) {
+    return iosStyle
+  } else {
+    if (androidStyle || androidStyle===0 ) return androidStyle;
+    return iosStyle
+  }
 }

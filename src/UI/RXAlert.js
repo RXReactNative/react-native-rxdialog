@@ -21,23 +21,22 @@ import React, { Component } from 'react'
 import {
   Text,
   View,
-  Image,
-  ScrollView,
-  NativeModules,
   TouchableOpacity,
-  TouchableWithoutFeedback
 } from 'react-native'
 
-import FadeAnimation  from '../animations/FadeAnimation'
-import ScaleAnimation from '../animations/ScaleAnimation'
-import SlideAnimation from '../animations/SlideAnimation'
+// import FadeAnimation  from '../animations/FadeAnimation'
+// import ScaleAnimation from '../animations/ScaleAnimation'
+// import SlideAnimation from '../animations/SlideAnimation'
 import AlertAnimation from '../animations/AlertAnimation'
 
 import Dialog from '../main/Dialog'
 import DialogTopView from '../level/DialogTopView'
 
-import {ISIphoneX, ISIphone,ISAndroid, IFIphone, IFIphoneX,
-  DeviceWidth, DeviceHeight} from '../util/PlatformType.js'
+import {
+  // ISIphoneX, ISIphone,ISAndroid, IFIphone, IFIphoneX,
+  // DeviceHeight,
+  DeviceWidth
+ } from '../util/PlatformType.js'
 
 const width = DeviceWidth * 0.7;
 const borderRadius = 10;

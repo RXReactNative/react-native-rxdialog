@@ -21,14 +21,15 @@ export default class FadeAnimation extends Animation {
   animate: Object
   animationDuration: number
 
-  constructor({
-    toValue = 0,
-    animationDuration = 200,
-    useNativeDriver = true,
-  } = {}) {
-    super({
-      toValue,
-      useNativeDriver
+  constructor(
+    {
+      toValue = 0,
+      animationDuration = 200,
+      useNativeDriver = true,
+    } = {}) {
+      super({
+        toValue,
+        useNativeDriver
     });
     this.animationDuration = animationDuration;
   }
