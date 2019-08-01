@@ -39,6 +39,7 @@ export default class AlertAnimation extends Animation {
         Animated.decay(this.animate, {
             duration: 0.2,
             toValue,
+            velocity: 0,
             useNativeDriver: this.useNativeDriver,
         }).start(onFinished)
         break;
