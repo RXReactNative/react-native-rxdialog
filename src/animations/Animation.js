@@ -54,31 +54,30 @@ import {
 } from 'react-native';
 
 export default class Animation {
-  useNativeDriver: boolean //使用原生动画驱动
-  animate: Object //Animated.Value
-  animations: Object //createAnimations
+  // useNativeDriver: boolean //使用原生动画驱动
+  // animate: Object //Animated.Value
+  // animations: Object //createAnimations
 
   constructor({
     toValue = 0,
     useNativeDriver = true,
-  }: {
-    toValue?: number;
-    useNativeDriver?: boolean;
-  } = {}) {
+  }) {
     this.useNativeDriver = useNativeDriver;
     this.animate = new Animated.Value(toValue);
     this.animations = this.createAnimations();
   }
 
   //Animation 底层方法 覆盖
-  toValue(): void {
+  toValue() {
     // 需要子类去实现
     throw Error('not implemented yet');
   }
 
   //Animation 底层方法 覆盖
-  createAnimations(): Object {
+  createAnimations() {
     // 需要子类去实现
     throw Error('not implemented yet');
+
+    // need return object
   }
 }

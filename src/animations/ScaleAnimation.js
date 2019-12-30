@@ -18,7 +18,7 @@ import {
 import Animation from './Animation';
 
 export default class ScaleAnimation extends Animation {
-  toValue(toValue: number, onFinished?: Function = () => { }): void {
+  toValue(toValue=0, onFinished = () => { })  {
     switch (toValue) {
       case 0: 
         Animated.spring(this.animate, {
@@ -43,7 +43,7 @@ export default class ScaleAnimation extends Animation {
     }
   }
 
-  createAnimations(): Object {
+  createAnimations() {
     const transform = [{
       scale: this.animate.interpolate({
         inputRange: [0, 1],

@@ -78,7 +78,7 @@ export function ISAndroid(){
  * @param androidStyle
  * @returns {*}
  */
-export function IFIphone(iosStyle: any, androidStyle: any) {
+export function IFIphone(iosStyle={}, androidStyle={}) {
   return IFIphoneX(iosStyle, iosStyle, androidStyle);
 }
 
@@ -89,7 +89,7 @@ export function IFIphone(iosStyle: any, androidStyle: any) {
  * @param androidStyle
  * @returns {*}
  */
-export function IFIphoneX(iphoneXStyle: any, iosStyle: any, androidStyle: any) {
+export function IFIphoneX(iphoneXStyle={}, iosStyle={}, androidStyle={}) {
   if (ISIphoneX()) {
     return iphoneXStyle;
   } else if (ISIphone()) {

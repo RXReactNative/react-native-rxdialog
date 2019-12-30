@@ -18,8 +18,6 @@ import {
 import Animation from './Animation';
 
 export default class AlertAnimation extends Animation {
-  animate: Object
-  animationDuration: number
 
   constructor({
     toValue = 0,
@@ -33,7 +31,7 @@ export default class AlertAnimation extends Animation {
     this.animationDuration = animationDuration;
   }
 
-  toValue(toValue: number, onFinished?: Function = () => { }): void {
+  toValue(toValue=0, onFinished = ()=>{}) {
     switch (toValue) {
       case 0:
         Animated.decay(this.animate, {
@@ -54,7 +52,7 @@ export default class AlertAnimation extends Animation {
     }
   }
 
-  createAnimations(): Object {
+  createAnimations() {
     const transform = [{
       scale: this.animate.interpolate({
         // inputRange: [0, 0.9, 1],

@@ -1,7 +1,7 @@
 
 {
   "name": "react-native-rxdialog",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React Native RXDialog for IOS & Android & windows.",
   "main": "index.js",
   "scripts": {

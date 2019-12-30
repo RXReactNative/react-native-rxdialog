@@ -18,9 +18,6 @@ import {
 import Animation from './Animation';
 
 export default class FadeAnimation extends Animation {
-  animate: Object
-  animationDuration: number
-
   constructor(
     {
       toValue = 0,
@@ -34,7 +31,7 @@ export default class FadeAnimation extends Animation {
     this.animationDuration = animationDuration;
   }
 
-  toValue(toValue: number, onFinished?: Function = () => { }) {
+  toValue(toValue=0, onFinished= () => { }) {
     Animated.timing(this.animate, {
       toValue,
       duration: this.animationDuration,
@@ -42,7 +39,7 @@ export default class FadeAnimation extends Animation {
     }).start(onFinished);
   }
 
-  createAnimations(): Object {
+  createAnimations() {
     return {
       opacity: this.animate
     };

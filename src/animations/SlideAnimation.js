@@ -25,7 +25,7 @@ export default class SlideAnimation extends Animation {
     this.animations = this.createAnimations(slideFrom);
   }
 
-  toValue(toValue: number, onFinished: Function = () => { }): void {
+  toValue(toValue=0, onFinished= () => { }) {
     Animated.spring(this.animate, {
       toValue,
       velocity: 0,
@@ -35,7 +35,7 @@ export default class SlideAnimation extends Animation {
     }).start(onFinished);
   }
 
-  createAnimations(slideFrom: string): Object {
+  createAnimations(slideFrom='bottom') {
     const transform = [];
 
     if (['top', 'bottom'].includes(slideFrom)) {
