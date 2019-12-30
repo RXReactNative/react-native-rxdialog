@@ -18,9 +18,11 @@ import {
   AppRegistry,
   View,
   Animated,
-  DeviceEventEmitter,
+  findNodeHandle,
   TouchableWithoutFeedback
 } from 'react-native'
+
+import Emitter from './Emitter';
 
 import {
   // ISIphoneX, ISIphone,ISAndroid, IFIphone, IFIphoneX,
@@ -37,17 +39,17 @@ export default class DialogTopView extends Component {
   static add(element) {
     if(!element) return;
     let key = ++keyValue;
-    DeviceEventEmitter.emit("addOverlay-Alert", { key, element });
+    Emitter.emit("addOverlay-Alert", { key, element });
     return key;
   }
 
   static remove(key) {
     if(!key) return;
-    DeviceEventEmitter.emit("removeOverlay-Alert", { key });
+    Emitter.emit("removeOverlay-Alert", { key });
   }
 
   static removeAll() {
-    DeviceEventEmitter.emit("removeAllOverlay-Alert", {});
+    Emitter.emit("removeAllOverlay-Alert", {});
   }
 
   constructor(props) {
@@ -60,21 +62,16 @@ export default class DialogTopView extends Component {
   }
 
   componentWillMount() {
-    DeviceEventEmitter.addListener("addOverlay-Alert", e => this.add(e));
-    DeviceEventEmitter.addListener("removeOverlay-Alert", e => this.remove(e));
-    DeviceEventEmitter.addListener("removeAllOverlay-Alert", e => this.removeAll(e));
+    Emitter.addListener("addOverlay-Alert", e => this.add(e));
+    Emitter.addListener("removeOverlay-Alert", e => this.remove(e));
+    Emitter.addListener("removeAllOverlay-Alert", e => this.removeAll(e));
 
-    DeviceEventEmitter.addListener("addOverlay-Loading", e => this.addLoading(e));
-    DeviceEventEmitter.addListener("removeOverlay-Loading", () => this.removeLoading());
+    Emitter.addListener("addOverlay-Loading", e => this.addLoading(e));
+    Emitter.addListener("removeOverlay-Loading", () => this.removeLoading());
   }
 
   componentWillUnmount() {
-    DeviceEventEmitter.removeAllListeners("addOverlay-Alert");
-    DeviceEventEmitter.removeAllListeners("removeOverlay-Alert");
-    DeviceEventEmitter.removeAllListeners("removeAllOverlay-Alert");
-
-    DeviceEventEmitter.removeAllListeners("addOverlay-Loading");
-    DeviceEventEmitter.removeAllListeners("removeOverlay-Loading");
+    Emitter.removeLister();
   }
 
   add(e) {
@@ -236,11 +233,6 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     zIndex: 1000,
     alignItems: 'center',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
     width,
     height,  
   },

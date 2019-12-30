@@ -25,7 +25,7 @@ declare module 'react-native-rxdialog' {
   /**
    * @this : RXAlert
    */
-   export class RXAlert extends Dialog {
+   export class RXAlert extends RXDialog {
     static show: (
       title : string | null,
       content : string| null,
