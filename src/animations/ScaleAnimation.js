@@ -18,6 +18,18 @@ import {
 import Animation from './Animation';
 
 export default class ScaleAnimation extends Animation {
+  constructor(
+    {
+      toValue = 0,
+      animationDuration = 200,
+      useNativeDriver = true,
+    } = {}) {
+      super({
+        toValue,
+        useNativeDriver
+    });
+    this.animationDuration = animationDuration;
+  }
   toValue(toValue=0, onFinished = () => { })  {
     switch (toValue) {
       case 0: 

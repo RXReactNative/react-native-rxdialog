@@ -14,6 +14,7 @@
 'use strict'
 import { Animated } from 'react-native';
 import Animation from './Animation';
+import {DeviceWidth} from '../util/PlatformType'
 
 export default class SlideAnimation extends Animation {
   constructor({
@@ -43,14 +44,14 @@ export default class SlideAnimation extends Animation {
         transform.push({
           translateY: this.animate.interpolate({
             inputRange: [0, 1],
-            outputRange: [800, 1],
+            outputRange: [DeviceWidth, 0],
           }),
         });
       } else {
         transform.push({
           translateY: this.animate.interpolate({
             inputRange: [0, 1],
-            outputRange: [-800, 1],
+            outputRange: [-DeviceWidth, 0],
           }),
         });
       }
@@ -59,14 +60,14 @@ export default class SlideAnimation extends Animation {
         transform.push({
           translateX: this.animate.interpolate({
             inputRange: [0, 1],
-            outputRange: [800, 1],
+            outputRange: [DeviceWidth, 0],
           }),
         });
       } else {
         transform.push({
           translateX: this.animate.interpolate({
             inputRange: [0, 1],
-            outputRange: [-800, 1],
+            outputRange: [-DeviceWidth, 0],
           }),
         });
       }
