@@ -2,7 +2,6 @@ declare module 'react-native-rxdialog' {
   import { Component } from 'react'
   import {
     ViewStyle,
-    ViewProps,
     Animated
   } from 'react-native'
 
@@ -11,7 +10,7 @@ declare module 'react-native-rxdialog' {
     style ?: ViewStyle
   }
 
-  declare abstract class AbstractAnimation {
+  abstract class AbstractAnimation {
     //驱动动画效果
     toValue: (
       toValue: number, 
@@ -25,8 +24,8 @@ declare module 'react-native-rxdialog' {
   /**
    * @this : RXAlert
    */
-   export class RXAlert extends RXDialog {
-    static show: (
+  export class RXAlert extends RXDialog {
+    show: (
       title : string | null,
       content : string| null,
       buttons : Array<RXAlertButtonProps>,
@@ -65,7 +64,7 @@ declare module 'react-native-rxdialog' {
   /**
   * @this : base - Animation
   */
-  export class RXAnimation implements AbstractAnimation{
+  export class RXAnimation extends AbstractAnimation{
     //使用原生动画驱动
     useNativeDriver: () => boolean
     //Animated.Value
@@ -80,7 +79,7 @@ declare module 'react-native-rxdialog' {
     ) => void
 
     //创建动画
-    createAnimations: () => Animation
+    // createAnimations: () => Animation
   }
 
   // 弹框动画
@@ -93,8 +92,9 @@ declare module 'react-native-rxdialog' {
   export class RXSlideAnimation extends RXAnimation {
     //--- 创建动画
     createAnimations: ( //defautl -> 'bottom'
-      slideFrom: 'left' | 'bottom' | 'left' | 'right' 
+      slideFrom: 'top' | 'bottom' | 'left' | 'right' 
     ) => Animation
+    
   }
 
   /**
