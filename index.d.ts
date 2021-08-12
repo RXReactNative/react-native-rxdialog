@@ -6,15 +6,15 @@ declare module 'react-native-rxdialog' {
   } from 'react-native'
 
   interface RXAlertButtonProps {
-    text ?: string
-    style ?: ViewStyle
+    text?: string
+    style?: ViewStyle
   }
 
   abstract class AbstractAnimation {
     //驱动动画效果
     toValue: (
-      toValue: number, 
-      onFinished : () => { }
+      toValue: number,
+      onFinished: () => {}
     ) => void
 
     //创建动画
@@ -26,18 +26,18 @@ declare module 'react-native-rxdialog' {
    */
   export class RXAlert extends RXDialog {
     show: (
-      title : string | null,
-      content : string| null,
-      buttons : Array<RXAlertButtonProps>,
-      Callback : (index : number) => void,
-      contentOptions ?: ViewStyle | null,
-      titleOptions ?: ViewStyle | null,
+      title: string | null,
+      content: string | null,
+      buttons: Array<RXAlertButtonProps>,
+      Callback: (index: number) => void,
+      contentOptions?: ViewStyle | null,
+      titleOptions?: ViewStyle | null,
     ) => void
-   }
-  
- /**
-  * @this : base - 弹框
-  */
+  }
+
+  /**
+   * @this : base - 弹框
+   */
   export class RXDialog {
     //
     static show: () => void
@@ -64,7 +64,7 @@ declare module 'react-native-rxdialog' {
   /**
   * @this : base - Animation
   */
-  export class RXAnimation extends AbstractAnimation{
+  export class RXAnimation extends AbstractAnimation {
     //使用原生动画驱动
     useNativeDriver: () => boolean
     //Animated.Value
@@ -74,8 +74,8 @@ declare module 'react-native-rxdialog' {
 
     //驱动动画效果
     toValue: (
-      toValue: number, 
-      onFinished : () => { }
+      toValue: number,
+      onFinished: () => {}
     ) => void
 
     //创建动画
@@ -83,28 +83,28 @@ declare module 'react-native-rxdialog' {
   }
 
   // 弹框动画
-  export class RXAlertAnimation extends RXAnimation{}
+  export class RXAlertAnimation extends RXAnimation { }
   // 渐变动画
-  export class RXFadeAnimation extends RXAnimation{}
+  export class RXFadeAnimation extends RXAnimation { }
   // 缩放动画
-  export class RXScaleAnimation extends RXAnimation{}
+  export class RXScaleAnimation extends RXAnimation { }
   // 划入动画
   export class RXSlideAnimation extends RXAnimation {
     //--- 创建动画
     createAnimations: ( //defautl -> 'bottom'
-      slideFrom: 'top' | 'bottom' | 'left' | 'right' 
+      slideFrom: 'top' | 'bottom' | 'left' | 'right'
     ) => Animation
-    
+
   }
 
   /**
   * @this : 显示弹框
   */
-  export class RXDialogTopView extends Component{
+  export class RXDialogTopView extends Component {
     //add element
     static add: (e?: JSX.Element) => void
     //remove element
-    static remove: (key ?: number) => void
+    static remove: (key?: number) => void
     //remove all element
     static removeAll: () => void
   }
@@ -115,10 +115,10 @@ declare module 'react-native-rxdialog' {
   export const DeviceWidth: number
   export const DeviceHeight: number
 
-  export function ISIphone() : boolean
-  export function ISIphoneX() : boolean
-  export function ISAndroid() : boolean
+  export function ISIphone(): boolean
+  export function ISIphoneX(): boolean
+  export function ISAndroid(): boolean
 
-  export function IFIphone(iosStyle: any, androidStyle: any) : any
-  export function IFIphoneX(iphoneXStyle: any, iosStyle: any, androidStyle: any) : any
+  export function IFIphone(iosStyle: any, androidStyle: any): any
+  export function IFIphoneX(iphoneXStyle: any, iosStyle: any, androidStyle: any): any
 }

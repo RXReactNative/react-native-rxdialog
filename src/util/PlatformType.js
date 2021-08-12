@@ -17,17 +17,17 @@ import {
   PixelRatio,
   Dimensions,
   Platform,
- } from 'react-native'
+} from 'react-native'
 
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
 const XSMAX_WIDTH = 414;
 const XSMAX_HEIGHT = 896;
 
-const { height, width} = Dimensions.get('window');
+const { height, width } = Dimensions.get('window');
 
-export const DeviceWidth = Platform.OS === 'web'? document.documentElement.clientWidth: width;
-export const DeviceHeight = Platform.OS === 'web'? document.documentElement.clientHeight: height;
+export const DeviceWidth = Platform.OS === 'web' ? document.documentElement.clientWidth : width;
+export const DeviceHeight = Platform.OS === 'web' ? document.documentElement.clientHeight : height;
 
 
 /**
@@ -35,17 +35,17 @@ export const DeviceHeight = Platform.OS === 'web'? document.documentElement.clie
  * @returns {boolean}
  */
 export function ISIphoneX() {
-  if (Platform.OS === 'web') return false; 
+  if (Platform.OS === 'web') return false;
 
   return (
     Platform.OS === 'ios' &&
     //Portrait && (ios => PortraitUpsideDown)  人像
-    ((DeviceHeight === X_HEIGHT && DeviceWidth === X_WIDTH) || 
-    // OrientationLandscapeLeft OrientationLandscapeRight  风景
-    (DeviceHeight === X_WIDTH && DeviceWidth === X_HEIGHT)) ||
+    ((DeviceHeight === X_HEIGHT && DeviceWidth === X_WIDTH) ||
+      // OrientationLandscapeLeft OrientationLandscapeRight  风景
+      (DeviceHeight === X_WIDTH && DeviceWidth === X_HEIGHT)) ||
 
     ((DeviceHeight === XSMAX_HEIGHT && DeviceWidth === XSMAX_WIDTH) ||
-    (DeviceHeight === XSMAX_WIDTH && DeviceWidth === XSMAX_HEIGHT))
+      (DeviceHeight === XSMAX_WIDTH && DeviceWidth === XSMAX_HEIGHT))
   );
 }
 
@@ -54,7 +54,7 @@ export function ISIphoneX() {
  * 判断是否为 Iphone
  * @returns {boolean}
  */
-export function ISIphone(){
+export function ISIphone() {
   return (
     Platform.OS === 'ios'
   )
@@ -64,9 +64,9 @@ export function ISIphone(){
  * 判断是否为 Android
  * @returns {boolean}
  */
-export function ISAndroid(){
+export function ISAndroid() {
   return (
-    ISIphone()?false: true
+    ISIphone() ? false : true
   )
 }
 
@@ -78,7 +78,7 @@ export function ISAndroid(){
  * @param androidStyle
  * @returns {*}
  */
-export function IFIphone(iosStyle={}, androidStyle={}) {
+export function IFIphone(iosStyle = {}, androidStyle = {}) {
   return IFIphoneX(iosStyle, iosStyle, androidStyle);
 }
 
@@ -89,13 +89,13 @@ export function IFIphone(iosStyle={}, androidStyle={}) {
  * @param androidStyle
  * @returns {*}
  */
-export function IFIphoneX(iphoneXStyle={}, iosStyle={}, androidStyle={}) {
+export function IFIphoneX(iphoneXStyle = {}, iosStyle = {}, androidStyle = {}) {
   if (ISIphoneX()) {
     return iphoneXStyle;
   } else if (ISIphone()) {
     return iosStyle
   } else {
-    if (androidStyle || androidStyle===0 ) return androidStyle;
+    if (androidStyle || androidStyle === 0) return androidStyle;
     return iosStyle
   }
 }

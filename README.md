@@ -34,7 +34,7 @@ https://rxreactnative.github.io/react-native-rxdialog-example/
 ```javascript
 import {
   RXDialogTopView,
-  
+
   RXAlert,
 
   RXDialog,
@@ -62,4 +62,4 @@ RXDialog;
 RXDialogTopView;
 RXAnimation;
 ```
-  
+

@@ -2,7 +2,7 @@
 import RXAlert           from './src/UI/RXAlert'
 
 import RXDialogTopView   from './src/level/DialogTopView'
-import RXDialog        from './src/main/Dialog'
+import RXDialog          from './src/main/Dialog'
 
 import RXAnimation       from './src/animations/Animation'
 import RXAlertAnimation  from './src/animations/AlertAnimation'
@@ -19,7 +19,7 @@ import PlatformType,{
 
 export {
   RXDialogTopView,
-  
+
   RXAlert,
 
   RXDialog,

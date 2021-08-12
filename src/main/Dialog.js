@@ -3,9 +3,9 @@
  *
  * author : srxboys
  * @flow  : 用于 静态语法检查
- * 
+ *
  * -------------------------------------------
- * 
+ *
  * 可重写方法列表:
  * @function hiddenAll          隐藏所有
  * @function show               显示(@require 子类实现)
@@ -15,7 +15,7 @@
  * @function getOverlayAnimated 遮罩层 的 动画
  * @function getOverlayStyles   遮罩层 的 样式
  * @function getOverlayEnable   遮罩层 是否 点击
- * 
+ *
  * 可调用的方法列表(不可重写)
  * @function addPropsValue      添加装饰(子类调用 【必须】)
 **/
@@ -32,8 +32,8 @@ import {
   TouchableWithoutFeedback
 } from 'react-native'
 
-import DialogTopView  from '../level/DialogTopView'
-import FadeAnimation  from '../animations/FadeAnimation';
+import DialogTopView from '../level/DialogTopView'
+import FadeAnimation from '../animations/FadeAnimation';
 import ScaleAnimation from '../animations/ScaleAnimation';
 import SlideAnimation from '../animations/SlideAnimation';
 
@@ -55,7 +55,7 @@ export default class Dialog {
 
   // 弹框 动画
   static getDialogAnimated() {
-    return ( new FadeAnimation({ animationDuration: 200 }) );
+    return (new FadeAnimation({ animationDuration: 200 }));
   }
 
   // 弹框 样式
@@ -67,7 +67,7 @@ export default class Dialog {
 
   // 遮罩层 动画
   static getOverlayAnimated() {
-    return ( new FadeAnimation({ animationDuration: 200 }) );
+    return (new FadeAnimation({ animationDuration: 200 }));
   }
 
   // 遮罩层 样式
@@ -82,8 +82,8 @@ export default class Dialog {
     return false;
   }
 
-  static addPropsValue(self, view, className = 'alert',Callback) {
-    if(!self) return null;
+  static addPropsValue(self, view, className = 'alert', Callback) {
+    if (!self) return null;
     if (!view) return null;
     Callback = Callback || {}
 
@@ -108,7 +108,7 @@ export default class Dialog {
       overlay: {
         overlayAnimated,
         overlayStyle,
-        overlayEnable, 
+        overlayEnable,
       },
       Callback: Callback
     });

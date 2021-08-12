@@ -3,16 +3,16 @@
  *
  * author : srxboys
  * @flow  : 用于 静态语法检查
- * 
+ *
  * -------------------------------------------
- * 
+ *
  * 可调用的方法列表:
  * @function hiddenAll   隐藏所有
  * @function show        显示(子类实现 【必须】)
- *                        show(title, content, buttons, Callback, 
- *                             contentOptions:{contentTextStyle: ?}, 
- *                             titleOptions:{titleTextStyle: ?} 
- *                           ) 
+ *                        show(title, content, buttons, Callback,
+ *                             contentOptions:{contentTextStyle: ?},
+ *                             titleOptions:{titleTextStyle: ?}
+ *                           )
  * @function hide        隐藏
 **/
 
@@ -36,7 +36,7 @@ import {
   // ISIphoneX, ISIphone,ISAndroid, IFIphone, IFIphoneX,
   // DeviceHeight,
   DeviceWidth
- } from '../util/PlatformType.js'
+} from '../util/PlatformType.js'
 
 const width = DeviceWidth * 0.7;
 const borderRadius = 10;
@@ -64,125 +64,125 @@ export default class RXAlert extends Dialog {
 
     let key;
     const alertView = (
-        <View style={{ width: width, borderRadius, backgroundColor: '#fff', overflow: 'hidden' }}>
-          {
-            title.length > 0 ?
-              <View>
-                <View style={{
-                  padding: content.length < 1 ? 20 : 10,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  borderTopLeftRadius: borderRadius,
-                  borderTopRightRadius: borderRadius
-                }}>
-                  <Text style={[{ fontSize: DEFAULT_TITLE_FONT_SIZE, fontWeight: 'bold' },
-                  { ...titleOptions.titleTextStyle }]}>{title}</Text>
-                </View>
-              </View>
-              :
+      <View style={{ width: width, borderRadius, backgroundColor: '#fff', overflow: 'hidden' }}>
+        {
+          title.length > 0 ?
+            <View>
               <View style={{
-                height: borderRadius + 5,
+                padding: content.length < 1 ? 20 : 10,
+                justifyContent: 'center',
+                alignItems: 'center',
                 borderTopLeftRadius: borderRadius,
                 borderTopRightRadius: borderRadius
-              }} />
-          }
-          {
-            content.length > 0 ?
-              <Text style={[{
-                fontSize: DEFAULT_CONTENT_FONT_SIZE,
-                padding: 20,
-                paddingTop: 5,
-                textAlign: 'center',
-              }, { ...contentOptions.contentTextStyle }]}>
-                {content}
-              </Text>
-              : null
-          }
-          <View style={{
-            height: 1,
-            backgroundColor,
-            width: width
-          }} />
-          {
-            buttons.length < 3 ?
-              <View style={{
-                height: 44,
-                // flex: 1,
-                flexDirection: 'row',
-                alignItems: 'center',
-                backgroundColor,
-                borderBottomLeftRadius: borderRadius,
-                borderBottomRightRadius: borderRadius
               }}>
-                {
-                  buttons.map((item, index) => {
-                    return (
-                      <TouchableOpacity activeOpacity={0.5} key={'alert-button-' + index} style={{
-                        flex: 1,
-                        height: 44,
-                        marginLeft: index == 0 ? 0 : 1,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        backgroundColor: '#fff',
-                        borderBottomLeftRadius: index == 0 ? borderRadius : 0,
-                        borderBottomRightRadius: index == buttons.length - 1 ? borderRadius : 0
-                      }} onPress={() => {
-                        DialogTopView.remove(key);
-                        Callback && Callback(index);
-                      }} >
-                        <Text style={[{ fontSize: DEFAULT_BUTTON_FONT_SIZE }, { ...item.style }]}>{item.text}</Text>
-                      </TouchableOpacity>
-                    )
-                  })
-                }
+                <Text style={[{ fontSize: DEFAULT_TITLE_FONT_SIZE, fontWeight: 'bold' },
+                { ...titleOptions.titleTextStyle }]}>{title}</Text>
               </View>
-              :
-              <View style={{
-                height: 45 * buttons.length - 1,
-                alignItems: 'center',
-                backgroundColor,
-                borderBottomLeftRadius: borderRadius,
-                borderBottomRightRadius: borderRadius
-              }}>
-                {
-                  buttons.map((item, index) => {
-                    return (
-                      <TouchableOpacity activeOpacity={0.5} key={'alert-button-' + index} style={{
-                        height: 44,
-                        width: width,
-                        marginTop: index == 0 ? 0 : 1,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        backgroundColor: '#fff',
-                        borderBottomLeftRadius: index == buttons.length - 1 ? borderRadius : 0,
-                        borderBottomRightRadius: index == buttons.length - 1 ? borderRadius : 0
-                      }} onPress={() => {
-                        DialogTopView.remove(key);
-                        Callback && Callback(index);
-                      }} >
-                        <Text style={[{ fontSize: DEFAULT_BUTTON_FONT_SIZE }, { ...item.style }]}>{item.text}</Text>
-                      </TouchableOpacity>
-                    )
-                  })
-                }
-              </View>
-          }
-        </View>
+            </View>
+            :
+            <View style={{
+              height: borderRadius + 5,
+              borderTopLeftRadius: borderRadius,
+              borderTopRightRadius: borderRadius
+            }} />
+        }
+        {
+          content.length > 0 ?
+            <Text style={[{
+              fontSize: DEFAULT_CONTENT_FONT_SIZE,
+              padding: 20,
+              paddingTop: 5,
+              textAlign: 'center',
+            }, { ...contentOptions.contentTextStyle }]}>
+              {content}
+            </Text>
+            : null
+        }
+        <View style={{
+          height: 1,
+          backgroundColor,
+          width: width
+        }} />
+        {
+          buttons.length < 3 ?
+            <View style={{
+              height: 44,
+              // flex: 1,
+              flexDirection: 'row',
+              alignItems: 'center',
+              backgroundColor,
+              borderBottomLeftRadius: borderRadius,
+              borderBottomRightRadius: borderRadius
+            }}>
+              {
+                buttons.map((item, index) => {
+                  return (
+                    <TouchableOpacity activeOpacity={0.5} key={'alert-button-' + index} style={{
+                      flex: 1,
+                      height: 44,
+                      marginLeft: index == 0 ? 0 : 1,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      backgroundColor: '#fff',
+                      borderBottomLeftRadius: index == 0 ? borderRadius : 0,
+                      borderBottomRightRadius: index == buttons.length - 1 ? borderRadius : 0
+                    }} onPress={() => {
+                      DialogTopView.remove(key);
+                      Callback && Callback(index);
+                    }} >
+                      <Text style={[{ fontSize: DEFAULT_BUTTON_FONT_SIZE }, { ...item.style }]}>{item.text}</Text>
+                    </TouchableOpacity>
+                  )
+                })
+              }
+            </View>
+            :
+            <View style={{
+              height: 45 * buttons.length - 1,
+              alignItems: 'center',
+              backgroundColor,
+              borderBottomLeftRadius: borderRadius,
+              borderBottomRightRadius: borderRadius
+            }}>
+              {
+                buttons.map((item, index) => {
+                  return (
+                    <TouchableOpacity activeOpacity={0.5} key={'alert-button-' + index} style={{
+                      height: 44,
+                      width: width,
+                      marginTop: index == 0 ? 0 : 1,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      backgroundColor: '#fff',
+                      borderBottomLeftRadius: index == buttons.length - 1 ? borderRadius : 0,
+                      borderBottomRightRadius: index == buttons.length - 1 ? borderRadius : 0
+                    }} onPress={() => {
+                      DialogTopView.remove(key);
+                      Callback && Callback(index);
+                    }} >
+                      <Text style={[{ fontSize: DEFAULT_BUTTON_FONT_SIZE }, { ...item.style }]}>{item.text}</Text>
+                    </TouchableOpacity>
+                  )
+                })
+              }
+            </View>
+        }
+      </View>
     )
     let element = Dialog.addPropsValue(this, alertView, 'alert', Callback);
     key = DialogTopView.add(element);
     return key;
   }
-  
+
   static getDialogAnimated() {
     //测试 选择不同的动画
-    // let animated = new FadeAnimation({ animationDuration: 200 }) 
+    // let animated = new FadeAnimation({ animationDuration: 200 })
     // let animated = new SlideAnimation({slideFrom: 'bottom'})
     // let animated = new SlideAnimation({slideFrom: 'left'})
     // let animated = new ScaleAnimation()
 
     //
     let animated = new AlertAnimation();
-    return (  animated )
+    return (animated)
   }
 }

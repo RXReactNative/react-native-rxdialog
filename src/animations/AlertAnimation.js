@@ -3,11 +3,11 @@
  *
  * @author : srxboys
  * @flow  : 用于 静态语法检查
- * 
+ *
  * -------------------------------------------
- * 
- * 
- * 
+ *
+ *
+ *
  **/
 
 'use strict'
@@ -31,14 +31,14 @@ export default class AlertAnimation extends Animation {
     this.animationDuration = animationDuration;
   }
 
-  toValue(toValue=0, onFinished = ()=>{}) {
+  toValue(toValue = 0, onFinished = () => { }) {
     switch (toValue) {
       case 0:
         Animated.decay(this.animate, {
-            duration: 0.2,
-            toValue,
-            velocity: 0,
-            useNativeDriver: this.useNativeDriver,
+          duration: 0.2,
+          toValue,
+          velocity: 0,
+          useNativeDriver: this.useNativeDriver,
         }).start(onFinished)
         break;
       case 1:

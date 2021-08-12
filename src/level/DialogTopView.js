@@ -3,12 +3,12 @@
  *
  * @author : srxboys
  * @flow  : 用于 静态语法检查
- * 
+ *
  * @source_from react-native-overlayer
  * -------------------------------------------
- * 
- * 
- * 
+ *
+ *
+ *
 **/
 
 'use strict'
@@ -37,14 +37,14 @@ const RXTRNLoadingKey = 'RX_Top_RN_loading_key'
 
 export default class DialogTopView extends Component {
   static add(element) {
-    if(!element) return;
+    if (!element) return;
     let key = ++keyValue;
     Emitter.emit("addOverlay-Alert", { key, element });
     return key;
   }
 
   static remove(key) {
-    if(!key) return;
+    if (!key) return;
     Emitter.emit("removeOverlay-Alert", { key });
   }
 
@@ -79,7 +79,7 @@ export default class DialogTopView extends Component {
     elements.push(e);
     this.setState({ elements });
 
-    this.doAnimated(e, true, ()=>{
+    this.doAnimated(e, true, () => {
       var visible = true;
       this.setState({ visible })
     })
@@ -87,10 +87,10 @@ export default class DialogTopView extends Component {
 
   remove(e) {
     let { elements } = this.state;
-    if(!elements) return;
+    if (!elements) return;
     var element = null;
     var index = 0;
-    
+
     for (let i = elements.length - 1; i >= 0; --i) {
       if (elements[i].key === e.key) {
         element = elements[i];
@@ -99,25 +99,25 @@ export default class DialogTopView extends Component {
       }
     }
 
-    if(!element) return;
-    this.doAnimated(element, false, ()=>{
+    if (!element) return;
+    this.doAnimated(element, false, () => {
       elements.splice(index, 1);
-      let visible = elements.length > 0 ?true :false;
-        this.setState({ elements, visible});
+      let visible = elements.length > 0 ? true : false;
+      this.setState({ elements, visible });
     })
   }
 
-  doAnimated(e, show=true, Callback) {
+  doAnimated(e, show = true, Callback) {
     let props = e.element.props;
     let dialogAnimation = props.dialog.dialogAnimation;
-    if(!dialogAnimation) return;
+    if (!dialogAnimation) return;
 
     let overlayAnimated = props.overlay.overlayAnimated;
-  
-    let toValue = show? 1 : 0;
+
+    let toValue = show ? 1 : 0;
 
     overlayAnimated.toValue(toValue);
-    dialogAnimation.toValue(toValue, ()=>{  Callback && Callback(); } );
+    dialogAnimation.toValue(toValue, () => { Callback && Callback(); });
   }
 
   delete(e) {
@@ -173,16 +173,16 @@ export default class DialogTopView extends Component {
     var element = null; // view
     var key = 0;        // view 在当前缓存的key
     var dialog = { // 弹框样式、动画
-                  dialogAnimation: {animations: null},
-                  dialogStyle: {}
-                };  
+      dialogAnimation: { animations: null },
+      dialogStyle: {}
+    };
     var overlay = { // 遮罩层样式、动画
-                    overlayAnimated: {animations: null},
-                    overlayStyle: {}
-                  }; 
+      overlayAnimated: { animations: null },
+      overlayStyle: {}
+    };
     var Callback = {};
-    if(elements.length) {
-      let index = elements.length-1;
+    if (elements.length) {
+      let index = elements.length - 1;
       key = elements[index].key;
       element = elements[index].element;
       dialog = element.props.dialog;
@@ -193,33 +193,33 @@ export default class DialogTopView extends Component {
 
     return (
       <View style={[styles.container, styles.dialog, dialog.dialogStyle]}>
-        <Animated.View style={{ flex: 1, width, height}}>
+        <Animated.View style={{ flex: 1, width, height }}>
           {this.props.children}
         </Animated.View>
 
-        <Animated.View style={[ styles.dialog, dialog.dialogStyle, overlay.overlayAnimated.animations ]} >
+        <Animated.View style={[styles.dialog, dialog.dialogStyle, overlay.overlayAnimated.animations]} >
           {
             element ?
               <TouchableWithoutFeedback
-                disabled={overlay.overlayEnable? false: true}
-                onPress={()=>{
+                disabled={overlay.overlayEnable ? false : true}
+                onPress={() => {
                   DialogTopView.remove(key)
                   Callback && Callback(-1)
                 }
-              }>
-                <View style={[overlay.overlayStyle,  {width, height} ]} />
+                }>
+                <View style={[overlay.overlayStyle, { width, height }]} />
               </TouchableWithoutFeedback>
-            : null
+              : null
           }
         </Animated.View>
         <Animated.View style={[styles.dialog, dialog.dialogAnimation.animations]} >
-            {
-              element ?
-                <View key={'DialogTopView' + key} >
-                  {element}
-                </View>
+          {
+            element ?
+              <View key={'DialogTopView' + key} >
+                {element}
+              </View>
               : null
-            }
+          }
         </Animated.View>
       </View>
     );
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     zIndex: 1000,
     alignItems: 'center',
     width,
-    height,  
+    height,
   },
   dialog: {
     overflow: 'visible', // hidden  visible scroll

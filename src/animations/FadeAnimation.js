@@ -3,12 +3,12 @@
  *
  * @author : srxboys
  * @flow  : 用于 静态语法检查
- * 
+ *
  * @source_from https://github.com/jacklam718/react-native-popup-dialog
  * -------------------------------------------
- * 
- * 
- * 
+ *
+ *
+ *
  **/
 
 'use strict'
@@ -24,14 +24,14 @@ export default class FadeAnimation extends Animation {
       animationDuration = 200,
       useNativeDriver = true,
     } = {}) {
-      super({
-        toValue,
-        useNativeDriver
+    super({
+      toValue,
+      useNativeDriver
     });
     this.animationDuration = animationDuration;
   }
 
-  toValue(toValue=0, onFinished= () => { }) {
+  toValue(toValue = 0, onFinished = () => { }) {
     Animated.timing(this.animate, {
       toValue,
       duration: this.animationDuration,

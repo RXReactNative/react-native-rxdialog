@@ -3,18 +3,18 @@
  *
  * @author : srxboys
  * @flow  : 用于 静态语法检查
- * 
+ *
  * @source_from https://github.com/jacklam718/react-native-popup-dialog
  * -------------------------------------------
- * 
- * 
- * 
+ *
+ *
+ *
 **/
 
 'use strict'
 import { Animated } from 'react-native';
 import Animation from './Animation';
-import {DeviceWidth} from '../util/PlatformType'
+import { DeviceWidth } from '../util/PlatformType'
 
 export default class SlideAnimation extends Animation {
   constructor({
@@ -26,7 +26,7 @@ export default class SlideAnimation extends Animation {
     this.animations = this.createAnimations(slideFrom);
   }
 
-  toValue(toValue=0, onFinished= () => { }) {
+  toValue(toValue = 0, onFinished = () => { }) {
     Animated.spring(this.animate, {
       toValue,
       velocity: 0,
@@ -36,7 +36,7 @@ export default class SlideAnimation extends Animation {
     }).start(onFinished);
   }
 
-  createAnimations(slideFrom='bottom') {
+  createAnimations(slideFrom = 'bottom') {
     const transform = [];
 
     if (['top', 'bottom'].includes(slideFrom)) {
