@@ -116,11 +116,16 @@ export default class DialogTopView extends Component {
     dialogAnimation.toValue(toValue, () => { Callback && Callback(); });
   }
 
-  delete(e) {
+  delete(e, isAll = false) {
     const { elements } = this.state;
     for (let i = elements.length - 1; i >= 0; --i) {
-      if (elements[i].key === e.key) {
-        React.cloneElement(e, {
+      const el = elements[i]
+      if (isAll === true) {
+        React.cloneElement(el, {
+          hidden: true
+        });
+      } else if (el.key === e.key) {
+        React.cloneElement(el, {
           hidden: true
         });
         break;
@@ -128,12 +133,9 @@ export default class DialogTopView extends Component {
     }
   }
 
-  removeAll(e) {
+  removeAll() {
     //明确了，不要结束动画
-    const { elements } = this.state;
-    if (elements.length <= 0) return;
-    const e = elements[elements.length - 1];
-    this.delete(e);
+    this.delete(null, true);
     this.setState({ deleteAllEnable: true });
   }
 
