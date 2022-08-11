@@ -18,7 +18,7 @@ import {
   TouchableWithoutFeedback
 } from 'react-native'
 
-import Emitter from './Emitter';
+import Emitter from '../Emitter';
 
 import {
   // ISIphoneX, ISIphone,ISAndroid, IFIphone, IFIphoneX,
